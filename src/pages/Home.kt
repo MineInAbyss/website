@@ -121,7 +121,6 @@ fun Page.homePage() = default(
 
     //TODO write an api to efficiently filter pages with tags
     val pages = listOf(
-        Pages.single(Path("site/rules.md"), Path("site")),
         Pages.single(Path("site/info/discord-linking.md"), Path("site")),
         Pages.single(Path("site/socials.md"), Path("site")),
     )
