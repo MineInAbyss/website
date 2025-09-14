@@ -94,7 +94,7 @@ fun Page.homePage() = default(
             p { +"Create guilds, beautiful player builds, and thrive in the depths of the abyss." }
         }
         card("Discover new wildlife", image = "/assets/gallery/tiny/mobs.webp", icon = { icons.butterfly }) {
-            p { +"Discover a large variety of custom monsters and animals on each layer" }
+            p { +"Discover a large variety of custom monsters and animals on each layer." }
         }
         card(
             "Play with custom mechanics",
@@ -109,6 +109,14 @@ fun Page.homePage() = default(
             icon = { icons.download }
         ) {
             p { +"See the entire abyss at once using Voxy, as well as other quality of life and performance optimizing mods." }
+        }
+        card(
+            "Learn more",
+            image = "/assets/gallery/tiny/idofront.webp",
+            url = "https://wiki.mineinabyss.com",
+            icon = { icons.school }
+        ) {
+            p { +"Read through the wiki to learn about server mechanics, starting guides, and more." }
         }
     }
 
