@@ -1,7 +1,7 @@
 plugins {
     application
-    kotlin("jvm") version "2.1.0"
-    kotlin("plugin.serialization") version "2.1.0"
+    kotlin("jvm") version "2.2.20"
+    kotlin("plugin.serialization") version "2.2.20"
 }
 
 
@@ -11,10 +11,8 @@ repositories {
 }
 
 dependencies {
-    implementation("me.dvyy:shocky:0.1.0")
+    implementation("me.dvyy:shocky:0.2.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("com.sksamuel.scrimage:scrimage-core:4.2.0")
-    implementation("com.sksamuel.scrimage:scrimage-webp:4.2.0")
 }
 
 kotlin {
@@ -32,11 +30,11 @@ application {
 }
 
 tasks {
-    task("generate") {
+    register("generate") {
         run.get().args("generate")
         finalizedBy(run)
     }
-    task("serve") {
+    register("serve") {
         run.get().args("serve")
         finalizedBy(run)
     }

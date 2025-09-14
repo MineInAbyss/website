@@ -3,41 +3,45 @@ package pages
 import components.card
 import kotlinx.html.classes
 import kotlinx.html.div
+import kotlinx.html.h1
+import kotlinx.html.h2
+import kotlinx.html.hr
+import kotlinx.html.p
 import me.dvyy.shocky.markdown
 import me.dvyy.shocky.page.Page
+import me.dvyy.shocky.page.Pages
 import templates.default
-import kotlin.io.path.*
+import kotlin.io.path.Path
 
 fun Page.gallery() = default {
     classes += "max-w-screen-xl"
-    markdown(
-        """
-        Welcome to our gallery! These images are posted by players in the `#promotional-images` channel on Discord.
-        Click on any image to view a full size, uncompressed version.
-    """.trimIndent()
-    )
-    div("grid grid-cols-1 space-y-4") {
-        Path("site/assets/gallery")
-            .listDirectoryEntries()
-            .filter { !it.nameWithoutExtension.endsWith("-min") && it.extension == "webp" }
-            .map { it.relativeTo(Path("site")) to it.getImageMetaOrNull() }
-            .sortedWith(compareBy({ it.second?.order ?: 1000.0 }, { it.first.nameWithoutExtension }))
-            .forEach { (image, meta) ->
-                val minimized = image.parent / (image.nameWithoutExtension + "-min.webp")
-                card(
-                    meta?.title ?: image.nameWithoutExtension.capitalize(),
-                    subtitle = if (meta != null) buildString {
-                        append("By ${meta.author}")
-                        if (meta.desc != null) {
-                            append(" — ")
-                            append(meta.desc)
-                        }
-                    } else null,
-                    imageClasses = "h-64 sm:h-80 md:h-[32rem] lg:h-[42rem]",
-                    showContent = false,
-                    url = image.pathString,
-                    image = minimized.pathString
-                )
+//    markdown(
+//        """
+//        Welcome to our gallery! These images are posted by players in the `#promotional-images` channel on Discord.
+//        Click on any image to view a full size, uncompressed version.
+//    """.trimIndent()
+//    )
+    div("space-y-8") {
+        Pages.walk(Path("site/albums"), Path("site"))
+            .map { it.read() }
+            .groupBy { it.date?.year }
+            .entries
+            .sortedByDescending { it.key }
+            .forEach { (year, pages) ->
+                h1("mb-2") { +"$year" }
+                hr("!my-4")
+                div("grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4") {
+                    pages.sortedByDescending { it.date }.forEach { page ->
+                        card(
+                            title = page.title,
+                            image = page.meta<AlbumMeta>().images.firstOrNull()?.thumbnail,
+                            subtitle = page.desc,
+                            url = page.url,
+                            imageClasses = "aspect-square",
+                            showContent = false,
+                        )
+                    }
+                }
             }
     }
 }

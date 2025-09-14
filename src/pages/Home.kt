@@ -1,6 +1,5 @@
 package pages
 
-import Colors.primary
 import components.*
 import kotlinx.html.*
 import kotlinx.serialization.Serializable
@@ -51,7 +50,8 @@ fun Page.homePage() = default(
     div("flex flex-row flex-wrap gap-4") {
         coloredButton("Join our Community", "bg-[#5865F2]", "https://discord.gg/jDd7x8V", icon = { icons.discord })
         div("group grow") {
-            coloredButton("Contribute", "bg-$primary", "https://mineinabyss.com/contributing",
+            coloredButton(
+                "Contribute", "bg-orange-700", "https://mineinabyss.com/contributing",
                 icon = { div("group-hover:animate-heartBeat") { icons.heart } }
             )
         }
@@ -86,25 +86,25 @@ fun Page.homePage() = default(
     h2 { +"Features" }
 
     div("grid grid-cols-1 md:grid-cols-2 gap-4 not-prose") {
-        card("Explore the abyss", image = "/assets/gallery/orth-tiny.webp", icon = { icons.map }) {
+        card("Explore the abyss", image = "/assets/gallery/tiny/orth.webp", icon = { icons.map }) {
             p { +"Explore the deepest Minecraft world, featuring 5 layers, over 7000 blocks, and a fully built city of Orth." }
         }
 
-        card("Survive and thrive", image = "/assets/gallery/survival-tiny.webp", icon = { icons.meat }) {
+        card("Survive and thrive", image = "/assets/gallery/tiny/survival.webp", icon = { icons.meat }) {
             p { +"Create guilds, beautiful player builds, and thrive in the depths of the abyss." }
         }
-        card("Discover new wildlife", image = "/assets/gallery/mobs-tiny.webp", icon = { icons.butterfly }) {
+        card("Discover new wildlife", image = "/assets/gallery/tiny/mobs.webp", icon = { icons.butterfly }) {
             p { +"Discover a large variety of custom monsters and animals on each layer" }
         }
         card(
             "Play with custom mechanics",
-            image = "/assets/gallery/bonfire-tiny.webp",
+            image = "/assets/gallery/tiny/bonfire.webp",
             icon = { icons.settingsSpark }) {
             p { +"Use our climbing system, feel the curse of the abyss, and play with many more features custom built for this server." }
         }
         card(
             "Get our modpack",
-            image = "/assets/gallery/voxy-tiny.webp",
+            image = "/assets/gallery/tiny/voxy.webp",
             url = "/modpack",
             icon = { icons.download }
         ) {
@@ -119,18 +119,23 @@ fun Page.homePage() = default(
 
     h2 { +"More info" }
 
+    class LinkCard(val title: String, val desc: String, val url: String)
     //TODO write an api to efficiently filter pages with tags
-    val pages = listOf(
+    val pages = (listOf(
         Pages.single(Path("site/info/discord-linking.md"), Path("site")),
         Pages.single(Path("site/socials.md"), Path("site")),
+    ).map { it.readFrontMatter() }.map { LinkCard(it.title, it.desc ?: "", it.url) }) + LinkCard(
+        "Feedback",
+        "Leave your suggestions for the server here",
+        "https://feedback.mineinabyss.com"
     )
 
     div("grid grid-cols-1 md:grid-cols-3 gap-4 not-prose") {
-        pages.map { it.readFrontMatter() }.forEach { post ->
+        pages.forEach { post ->
             card(post.title, url = post.url) {
-                div("flex flex-row gap-2 mb-2") {
-                    post.tags.forEach { p("text-xs font-bold uppercase text-stone-400") { +it } }
-                }
+//                div("flex flex-row gap-2 mb-2") {
+//                    post.tags.forEach { p("text-xs font-bold uppercase text-stone-400") { +it } }
+//                }
                 p { +(post.desc ?: "") }
             }
         }

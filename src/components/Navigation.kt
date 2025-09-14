@@ -2,6 +2,7 @@ package components
 
 import kotlinx.html.FlowContent
 import kotlinx.html.div
+import kotlinx.html.nav
 import me.dvyy.shocky.page.Page
 
 fun FlowContent.navigation(outlined: Boolean = true, center: Boolean = true, page: Page) = div("flex w-full justify-center") {
@@ -13,10 +14,10 @@ fun FlowContent.navigation(outlined: Boolean = true, center: Boolean = true, pag
         val selected = "bg-stone-700 hover:bg-stone-600"
         val unselected = "bg-stone-800 hover:bg-stone-700"
         fun isSelected(url: String) = if (page.url == url) selected else unselected
-        div("flex space-x-2") {
+        nav("flex space-x-2") {
             coloredButton("Home", isSelected("/"), "/")
             coloredButton("Gallery", isSelected("/gallery"), "/gallery")//, icon = { icons.camera })
-            coloredButton("Blog", isSelected("/blog"), "/blog")//, icon = { icons.article })
+            coloredButton("Rules", isSelected("/rules"), "/rules")//, icon = { icons.article })
             coloredButton("Wiki", unselected, "https://wiki.mineinabyss.com")//, icon = { icons.infoCircle })
         }
     }

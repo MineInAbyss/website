@@ -8,7 +8,7 @@ inline fun FlowContent.optionalA(href: String?, crossinline block: FlowContent.(
 }
 
 inline fun FlowContent.card(
-    title: String,
+    title: String?,
     subtitle: String? = null,
     image: String? = null,
     url: String? = null,
@@ -23,18 +23,18 @@ inline fun FlowContent.card(
                 if (image != null) {
                     lazyImg(
                         src = image,
-                        alt = title,
+                        alt = title ?: "Untitled",
                         classes = "w-full h-full object-cover ${if (showContent) "rounded-t-lg" else "rounded-lg"} m-0"
                     ) { }
                     if (showContent) div("absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-stone-800 to-transparent") {}
                     else div("rounded-b-lg absolute bottom-0 left-0 right-0 h-1/2 md:h-32 bg-gradient-to-t from-[rgba(0,0,0,0.6)] to-transparent") {}
                 }
-                div("${if (image != null) "absolute" else "pt-4"} ${if (url != null) "transition-opacity duration-300 group-hover:opacity-70" else ""} bottom-0 w-full px-4 drop-shadow-lg") {
+                div("${if (image != null) "absolute" else "pt-4"} ${if(showContent) "" else "mb-2"} ${if (url != null) "transition-opacity duration-300 group-hover:opacity-70" else ""} bottom-0 w-full px-4 drop-shadow-lg") {
                     div("flex flex-row items-center space-x-1") {
                         icon()
-                        p("text-xl md:text-2xl font-bold") { +title }
+                        if(title != null) p("text-xl md:text-2xl font-bold") { +title }
                     }
-                    if (subtitle != null) p("text-sm select-all leading-snug font-mono mb-2") { +subtitle }
+                    if (subtitle != null) p("text-sm select-all leading-snug font-mono") { +subtitle }
                 }
             }
             if (showContent) div(if (image != null) "p-4" else "px-4 pb-4") {
