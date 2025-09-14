@@ -1,5 +1,5 @@
 ---
-title: 4 Year anniversary update!
+title: 4 Year anniversary
 #desc: Collaborative artworks made by members of the community.
 template: album
 date: 2021-11-30
@@ -114,3 +114,6 @@ images:
     separateThumbnail: false
     author: Offz
 ---
+
+This is our last Reddit post ["Mine in Abyss - 4 Year Anniversary"](https://www.reddit.com/r/MadeInAbyss/comments/r88cz6/mine_in_abyss_4_year_anniversary/) before a long hiatus.
+By this point, we had extended the world height and started adding some familiar features to survival like bonfires, custom items, and more.

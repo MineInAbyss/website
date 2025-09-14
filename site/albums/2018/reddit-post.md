@@ -1,5 +1,5 @@
 ---
-title: The beginnings
+title: Beginnings
 #desc: Collaborative artworks made by members of the community.
 template: album
 date: 2018-01-20
@@ -122,3 +122,8 @@ images:
   - author: Adar
     url: https://cdn.mineinabyss.com/website/albums/2018/reddit-post/30.webp
 ---
+
+These are the first album images we posted on Reddit: ["Mine in Abyss - Made in Abyss Minecraft Re-Creation"](https://www.reddit.com/r/MadeInAbyss/comments/7ru0kb/mine_in_abyss_made_in_abyss_minecraft_recreation/), 
+a follow-up to Thardoc's original post ["Made in Minecraft"](https://www.reddit.com/r/MadeInAbyss/comments/7g1jjh/made_in_minecraft/).
+Many of these are screenshots from WorldPainter, the program used by Adar to create the empty map.
+At this point the server was running in Thardoc's house, and Orth was just a tiny village!

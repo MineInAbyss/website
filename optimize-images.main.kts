@@ -52,12 +52,12 @@ suspend fun compress() = coroutineScope {
             val relative = path.relativeTo(compress)
             println("Compressing $path...")
             compressImage(path, (out / relative).createParentDirectories(), { this }, uncompressed)
-            compressImage(
-                path,
-                (out / relative.parent / "tiny" / relative.name).createParentDirectories(),
-                { scaleToHeight(560, ScaleMethod.Bicubic) },
-                tiny,
-            )
+//            compressImage(
+//                path,
+//                (out / relative.parent / "tiny" / relative.name).createParentDirectories(),
+//                { scaleToHeight(560, ScaleMethod.Bicubic) },
+//                tiny,
+//            )
             compressImage(
                 path,
                 (out / relative.parent / "min" / relative.name).createParentDirectories(),

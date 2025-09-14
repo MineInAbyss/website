@@ -1,5 +1,5 @@
 ---
-title: One Year anniversary
+title: 1 Year anniversary
 #desc: Collaborative artworks made by members of the community.
 template: album
 date: 2018-11-30
@@ -95,3 +95,9 @@ images:
     author: Offz
     url: https://cdn.mineinabyss.com/website/albums/2018/anniversary/22.webp
 ---
+
+These are images from our first anniversary Reddit post ["Mine in Abyss - One Year Progress Update"](https://www.reddit.com/r/MadeInAbyss/comments/a1xlwy/mine_in_abyss_one_year_progress_update).
+The render was made in Chunky, the same program we used to create skyboxes.
+Each section was rendered one at a time, and the results were merged in Photoshop.
+By this point, layer 4 was just added, but you can see some iconic builds throughout the abyss starting
+to take shape!

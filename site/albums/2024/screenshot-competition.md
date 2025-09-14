@@ -1,5 +1,5 @@
 ---
-title: 7-year anniversary
+title: 7 year anniversary
 desc: Screenshot competition
 template: album
 date: 2024-12-26
