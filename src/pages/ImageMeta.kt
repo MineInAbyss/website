@@ -23,7 +23,7 @@ data class ImageMeta(
     val compress: String = "med",
     val url: String,
     val separateThumbnail: Boolean = true,
-    val thumbnail: String = if(separateThumbnail) (Path(url).parent / "min" / Path(url).name).pathString else url,
+    val thumbnail: String = if(separateThumbnail) "${url.substringBeforeLast("/")}/min/${url.substringAfterLast("/")}" else url,
 )
 
 fun Path.getImageMetaOrNull(): ImageMeta? = (parent / ("$nameWithoutExtension.yml"))
