@@ -70,3 +70,6 @@ images:
     author: Heliasix
     url: https://cdn.mineinabyss.com/website/albums/2024/screenshot-competition/16.webp
 ---
+
+A screenshot competition event we ran for our 7 year anniversary.
+Most are taken on the survival server and showcase a variety of player towns and builds!

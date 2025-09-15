@@ -33,11 +33,12 @@ fun Page.homePage() = default(
         div("relative") {
             id = "about"
             div("absolute bottom-0 transform -translate-y-4 w-full") {
-                navigation(page = page)
+                navigation(page = page, center = true, alwaysFloating = true)
             }
         }
     }
 ) {
+    div("mt-10")
     markdown(
         """
         # About us
@@ -63,6 +64,7 @@ fun Page.homePage() = default(
         card(
             "Survival",
             subtitle = "survive.mineinabyss.com",
+            subtitleClasses = "font-mono",
             icon = { icons.meat },
         ) {
             p { +"Play and build with other members of the community." }
@@ -70,6 +72,7 @@ fun Page.homePage() = default(
         card(
             "Build",
             subtitle = "build.mineinabyss.com",
+            subtitleClasses = "font-mono",
             icon = { icons.hammer },
         ) {
             p { +"Explore the map with flight enabled, build in the creative world." }
@@ -77,6 +80,7 @@ fun Page.homePage() = default(
         card(
             "Archive",
             subtitle = "archive.mineinabyss.com",
+            subtitleClasses = "font-mono",
             icon = { icons.archive },
         ) {
             p { +"An archive of past maps, containing old survival builds and towns." }

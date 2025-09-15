@@ -1,7 +1,6 @@
 package pages
 
 import components.card
-import kotlinx.html.classes
 import kotlinx.html.div
 import kotlinx.html.h1
 import kotlinx.html.hr
@@ -12,12 +11,11 @@ import templates.default
 import kotlin.io.path.Path
 
 fun Page.gallery() = default {
-    classes += "max-w-screen-xl"
     markdown(
         """
         Welcome to our gallery! This page contains historical albums from our Reddit posts, as well as many fun images
         taken throughout the years. Click on any image to view a full size, uncompressed version.
-    """.trimIndent()
+        """.trimIndent()
     )
     div("space-y-8") {
         Pages.walk(Path("site/albums"), Path("site"))
